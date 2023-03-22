@@ -49,7 +49,7 @@ export class PlayerManager {
   async _onAvatarChanged(player: Player, avatarData: ArrayBuffer) {
     const avatarURL = player.avatarURL;
     if (avatarURL) {
-      localStorage.avatarURL = avatarURL;
+      localStorage.avatarURL = new URL(avatarURL, location.href).toString();
       deleteAvatarData();
     } else {
       delete localStorage.avatarURL;
