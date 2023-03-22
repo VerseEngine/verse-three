@@ -1,0 +1,54 @@
+{
+  "name": "@verseengine/verse-three",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "scripts": {
+    "example": "npm run build && npx http-server -c-1 -p 8080",
+    "example-ssl": "npm run build && npx http-server -c-1 --ssl --key ./cert/localhost+2-key.pem --cert ./cert/localhost+2.pem -p 8080",
+    "clean": "rimraf dist *.clean **/*.clean",
+    "prepare": "npm run build",
+    "prebuild": "rimraf dist",
+    "build": "run-p build:*",
+    "build:js": "node build.mjs",
+    "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/esm",
+    "postbuild": "npx api-extractor run --local --verbose && npx api-documenter markdown -i dist/temp/ -o ./docs",
+    "lint": "tsc --noEmit && npx eslint .",
+    "check-update": "ncu"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@microsoft/api-documenter": "^7.21.5",
+    "@microsoft/api-extractor": "^7.34.4",
+    "@msgpack/msgpack": "^2.8.0",
+    "@verseengine/three-avatar": "git+ssh://git@github.com.verseengine:VerseEngine/three-avatar.git",
+    "@verseengine/three-move-controller": "git+ssh://git@github.com.verseengine:VerseEngine/three-move-controller.git",
+    "@verseengine/three-touch-controller": "git+ssh://git@github.com.verseengine:VerseEngine/three-touch-controller.git",
+    "@verseengine/three-xr-controller": "git+ssh://git@github.com.verseengine:VerseEngine/three-xr-controller.git",
+    "@verseengine/verse-three-ui": "git+ssh://git@github.com.verseengine:VerseEngine/verse-three-ui.git",
+    "@verseengine/verse-core": "git+ssh://git@github.com.verseengine:VerseEngine/verse-core.git",
+    "buffered-interpolation": "github:Infinitelee/buffered-interpolation",
+    "three": ">=0.146.0"
+  },
+  "devDependencies": {
+    "@microsoft/api-documenter": "^7.21.5",
+    "@microsoft/api-extractor": "^7.34.4",
+    "@types/aframe": "^1.2.2",
+    "@types/three": ">=0.146.0",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
+    "@typescript-eslint/parser": "^5.52.0",
+    "esbuild": "^0.17.8",
+    "esbuild-plugin-external-global": "^1.0.1",
+    "eslint": "^8.34.0",
+    "eslint-plugin-tsdoc": "^0.2.17",
+    "npm-check-updates": "^16.7.4",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^4.1.2",
+    "typescript": "^4.9.5",
+    "user-agent-data-types": "^0.3.0"
+  }
+}

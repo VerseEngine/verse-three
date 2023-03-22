@@ -1,0 +1,1 @@
+https://github.com/mrdoob/three.js/blob/master/examples/textures/hardwood2_diffuse.jpg

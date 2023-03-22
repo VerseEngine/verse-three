@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1,viewport-fit=cover"
+    />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="referrer" content="no-referrer" />
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+    <script
+      async
+      src="https://cdn.jsdelivr.net/npm/es-module-shims@1.6.2/dist/es-module-shims.min.js"
+    ></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.150.0/build/three.module.js",
+          "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/three@0.150.0/examples/jsm/",
+          "@pixiv/three-vrm": "https://cdn.jsdelivr.net/npm/@pixiv/three-vrm@1.0.9/lib/three-vrm.module.min.js",
+          "./setup": "./setup.js",
+          "./world": "./world.js",
+          "verse-three": "../dist/esm/index.c4f04e5234951233.min.js",
+          "./setup-verse": "./setup-verse.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import * as THREE from "three";
+      import { setupScene } from "./setup";
+      import { setupVerse } from "./setup-verse";
+      import { createWorldObjects } from "./world";
+
+      // https://otowabi.com/music/20210806gohan
+      const BGM_URL = "./asset/bgm/20210806gohan.mp3";
+      // Piano jazz station - https://dir.xiph.org/search?q=Piano+jazz+station
+      // const BGM_URL = "https://radio108.ru:8150/stream";
+
+      const main = () => {
+        const collisionObjects = [];
+        const teleportTargetObjects = [];
+        const interactableObjects = [];
+        const collisionBoxes = [];
+
+        const updateCollisionBoxes = () => {
+          collisionBoxes.length = 0;
+          [...collisionObjects, ...teleportTargetObjects].map((el) => {
+            el.traverse((c) => {
+              if (!c.isMesh) {
+                return;
+              }
+              collisionBoxes.push(new THREE.Box3().setFromObject(c));
+            });
+          });
+        };
+
+        let _tick = () => {};
+        const ctx = setupScene((dt) => {
+          _tick(dt);
+        }, true);
+        teleportTargetObjects.push(ctx.ground);
+        createWorldObjects(ctx.scene, collisionObjects, teleportTargetObjects);
+        updateCollisionBoxes();
+
+        const { scene, renderer, camera } = ctx;
+        scene.matrixAutoUpdate = false;
+
+        camera.position.set(0.0, 1.6, 0);
+        const cameraContainer = new THREE.Object3D();
+        cameraContainer.add(camera);
+        const player = new THREE.Object3D();
+        player.name = "player";
+        player.add(cameraContainer);
+        scene.add(player);
+        scene.updateMatrix();
+
+        setupVerse(
+          scene,
+          renderer,
+          camera,
+          cameraContainer,
+          player,
+          collisionBoxes,
+          collisionObjects,
+          interactableObjects,
+          teleportTargetObjects,
+          BGM_URL
+        ).then((tick) => {
+          _tick = tick;
+        });
+      };
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", main);
+      } else {
+        main();
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
