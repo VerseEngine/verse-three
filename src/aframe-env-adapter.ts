@@ -10,8 +10,8 @@ import type { EnvAdapter } from "./env-adapter";
 export class AFrameEnvAdapter extends DefaultEnvAdapter implements EnvAdapter {
   constructor(
     scene: Scene,
-    cameraRig: THREE.Object3D,
     headOffset: THREE.Object3D,
+    cameraRig: THREE.Object3D,
     getCollisionBoxes: () => THREE.Box3[] | undefined,
     getCollisionObjects: () => THREE.Object3D[] | undefined,
     getTeleportTargetObjects: () => THREE.Object3D[] | undefined,
