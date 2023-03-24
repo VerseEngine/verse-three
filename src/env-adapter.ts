@@ -76,7 +76,7 @@ export interface EnvAdapter {
    * ```
    * - Object to which camera, avatar, and XR controller are added
    * - Moving target
-   * - Horizontall rotation target
+   * - Horizontal rotation target
    * ```
    */
   getCameraRig(): THREE.Object3D;

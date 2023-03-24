@@ -21,6 +21,6 @@ THREE.Object3D
 ```
 - Object to which camera, avatar, and XR controller are added
 - Moving target
-- Horizontall rotation target
+- Horizontal rotation target
 ```
 

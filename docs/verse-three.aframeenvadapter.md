@@ -19,7 +19,7 @@ export declare class AFrameEnvAdapter extends DefaultEnvAdapter implements EnvAd
 
 |  Constructor | Modifiers | Description |
 |  --- | --- | --- |
-|  [(constructor)(scene, cameraRig, headOffset, getCollisionBoxes, getCollisionObjects, getTeleportTargetObjects, options)](./verse-three.aframeenvadapter._constructor_.md) |  | Constructs a new instance of the <code>AFrameEnvAdapter</code> class |
+|  [(constructor)(scene, headOffset, cameraRig, getCollisionBoxes, getCollisionObjects, getTeleportTargetObjects, options)](./verse-three.aframeenvadapter._constructor_.md) |  | Constructs a new instance of the <code>AFrameEnvAdapter</code> class |
 
 ## Methods
 

@@ -5,9 +5,33 @@ import { DefaultEnvAdapter } from "./default-env-adapter";
 import type { EnvAdapter } from "./env-adapter";
 
 /**
+ * see: {@link AFrameEnvAdapter}
+ */
+export interface AFrameEnvAdapterOptions {
+  /** {@inheritDoc EnvAdapter.getInteractableObjects} */
+  getInteractableObjects?: () => THREE.Object3D[] | undefined;
+  /** {@inheritDoc EnvAdapter.onCursorHover} */
+  onCursorHover?: (el: THREE.Object3D) => void;
+  /** {@inheritDoc EnvAdapter.onCursorLeave} */
+  onCursorLeave?: (el: THREE.Object3D) => void;
+  /** {@inheritDoc EnvAdapter.onSelectUp} */
+  onSelectUp?: (el: THREE.Object3D, point: THREE.Vector3) => void;
+  /** {@inheritDoc EnvAdapter.onSelectDown} */
+  onSelectDown?: (el: THREE.Object3D, point: THREE.Vector3) => void;
+  /** {@inheritDoc EnvAdapter.isLowSpecMode} */
+  isLowSpecMode?: boolean;
+}
+/**
  * {@link EnvAdapter} implementation for {@link https://aframe.io/ | AFrame}.
  */
 export class AFrameEnvAdapter extends DefaultEnvAdapter implements EnvAdapter {
+  /**
+   * @param headOffset - head offset object.
+   * @param cameraRig - Container object of the local player.
+   * @param getCollisionBoxes - Get a list of ground and obstacle {@link https://threejs.org/docs/?q=Box3#api/en/math/Box3.setFromObject | bounding boxes}.
+   * @param getCollisionObjects - Get a list of objects that the laser pointer will not penetrate.(For XR Controllers)
+   * @param getTeleportTargetObjects - Get a list of objects that can be the destination of a teleport. (For XR Controllers)
+   */
   constructor(
     scene: Scene,
     headOffset: THREE.Object3D,
@@ -15,14 +39,7 @@ export class AFrameEnvAdapter extends DefaultEnvAdapter implements EnvAdapter {
     getCollisionBoxes: () => THREE.Box3[] | undefined,
     getCollisionObjects: () => THREE.Object3D[] | undefined,
     getTeleportTargetObjects: () => THREE.Object3D[] | undefined,
-    options?: {
-      getInteractableObjects?: () => THREE.Object3D[] | undefined;
-      onCursorHover?: (el: THREE.Object3D) => void;
-      onCursorLeave?: (el: THREE.Object3D) => void;
-      onSelectUp?: (el: THREE.Object3D, point: THREE.Vector3) => void;
-      onSelectDown?: (el: THREE.Object3D, point: THREE.Vector3) => void;
-      isLowSpecMode?: boolean;
-    }
+    options?: AFrameEnvAdapterOptions
   ) {
     super(
       scene.renderer,

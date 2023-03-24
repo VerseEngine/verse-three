@@ -28,6 +28,8 @@ see: [start()](./verse-three.start.md)
 
 |  Interface | Description |
 |  --- | --- |
+|  [AFrameEnvAdapterOptions](./verse-three.aframeenvadapteroptions.md) | see: [AFrameEnvAdapter](./verse-three.aframeenvadapter.md) |
+|  [DefaultEnvAdapterOptions](./verse-three.defaultenvadapteroptions.md) | see: [DefaultEnvAdapter](./verse-three.defaultenvadapter.md) |
 |  [EnvAdapter](./verse-three.envadapter.md) | Interface that summarizes the environment. |
 |  [StartOptions](./verse-three.startoptions.md) | see: [start()](./verse-three.start.md) |
 

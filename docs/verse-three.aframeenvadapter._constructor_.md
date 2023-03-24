@@ -9,14 +9,7 @@ Constructs a new instance of the `AFrameEnvAdapter` class
 **Signature:**
 
 ```typescript
-constructor(scene: Scene, cameraRig: THREE.Object3D, headOffset: THREE.Object3D, getCollisionBoxes: () => THREE.Box3[] | undefined, getCollisionObjects: () => THREE.Object3D[] | undefined, getTeleportTargetObjects: () => THREE.Object3D[] | undefined, options?: {
-        getInteractableObjects?: () => THREE.Object3D[] | undefined;
-        onCursorHover?: (el: THREE.Object3D) => void;
-        onCursorLeave?: (el: THREE.Object3D) => void;
-        onSelectUp?: (el: THREE.Object3D, point: THREE.Vector3) => void;
-        onSelectDown?: (el: THREE.Object3D, point: THREE.Vector3) => void;
-        isLowSpecMode?: boolean;
-    });
+constructor(scene: Scene, headOffset: THREE.Object3D, cameraRig: THREE.Object3D, getCollisionBoxes: () => THREE.Box3[] | undefined, getCollisionObjects: () => THREE.Object3D[] | undefined, getTeleportTargetObjects: () => THREE.Object3D[] | undefined, options?: AFrameEnvAdapterOptions);
 ```
 
 ## Parameters
@@ -24,10 +17,10 @@ constructor(scene: Scene, cameraRig: THREE.Object3D, headOffset: THREE.Object3D,
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  scene | Scene |  |
-|  cameraRig | THREE.Object3D |  |
-|  headOffset | THREE.Object3D |  |
-|  getCollisionBoxes | () =&gt; THREE.Box3\[\] \| undefined |  |
-|  getCollisionObjects | () =&gt; THREE.Object3D\[\] \| undefined |  |
-|  getTeleportTargetObjects | () =&gt; THREE.Object3D\[\] \| undefined |  |
-|  options | { getInteractableObjects?: () =&gt; THREE.Object3D\[\] \| undefined; onCursorHover?: (el: THREE.Object3D) =&gt; void; onCursorLeave?: (el: THREE.Object3D) =&gt; void; onSelectUp?: (el: THREE.Object3D, point: THREE.Vector3) =&gt; void; onSelectDown?: (el: THREE.Object3D, point: THREE.Vector3) =&gt; void; isLowSpecMode?: boolean; } | _(Optional)_ |
+|  headOffset | THREE.Object3D | head offset object. |
+|  cameraRig | THREE.Object3D | Container object of the local player. |
+|  getCollisionBoxes | () =&gt; THREE.Box3\[\] \| undefined | Get a list of ground and obstacle [bounding boxes](https://threejs.org/docs/?q=Box3#api/en/math/Box3.setFromObject)<!-- -->. |
+|  getCollisionObjects | () =&gt; THREE.Object3D\[\] \| undefined | Get a list of objects that the laser pointer will not penetrate.(For XR Controllers) |
+|  getTeleportTargetObjects | () =&gt; THREE.Object3D\[\] \| undefined | Get a list of objects that can be the destination of a teleport. (For XR Controllers) |
+|  options | [AFrameEnvAdapterOptions](./verse-three.aframeenvadapteroptions.md) | _(Optional)_ |
 

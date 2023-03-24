@@ -4,6 +4,25 @@ import { isIOS } from "./util";
 import { Avatar } from "@verseengine/three-avatar";
 
 /**
+ * see: {@link DefaultEnvAdapter}
+ */
+export interface DefaultEnvAdapterOptions {
+  /** {@inheritDoc EnvAdapter.isLowSpecMode} */
+  isLowSpecMode?: boolean;
+  /** {@inheritDoc EnvAdapter.getAudioListener} */
+  getAudioListener?: () => THREE.AudioListener;
+  /** {@inheritDoc EnvAdapter.getInteractableObjects} */
+  getInteractableObjects?: () => THREE.Object3D[] | undefined;
+  /** {@inheritDoc EnvAdapter.onCursorHover} */
+  onCursorHover?: (el: THREE.Object3D) => void;
+  /** {@inheritDoc EnvAdapter.onCursorLeave} */
+  onCursorLeave?: (el: THREE.Object3D) => void;
+  /** {@inheritDoc EnvAdapter.onSelectUp} */
+  onSelectUp?: (el: THREE.Object3D, point: THREE.Vector3) => void;
+  /** {@inheritDoc EnvAdapter.onSelectDown} */
+  onSelectDown?: (el: THREE.Object3D, point: THREE.Vector3) => void;
+}
+/**
  * Default implementation of {@link EnvAdapter}.
  */
 export class DefaultEnvAdapter implements EnvAdapter {
@@ -30,6 +49,13 @@ export class DefaultEnvAdapter implements EnvAdapter {
   private _onSelectDown?: (el: THREE.Object3D, point: THREE.Vector3) => void;
   private _avatarChangedListeners: Array<(avatar: Avatar) => void> = [];
 
+  /**
+   * @param headOffset - head offset object.
+   * @param cameraRig - Container object of the local player.
+   * @param getCollisionBoxes - Get a list of ground and obstacle {@link https://threejs.org/docs/?q=Box3#api/en/math/Box3.setFromObject | bounding boxes}.
+   * @param getCollisionObjects - Get a list of objects that the laser pointer will not penetrate.(For XR Controllers)
+   * @param getTeleportTargetObjects - Get a list of objects that can be the destination of a teleport. (For XR Controllers)
+   */
   constructor(
     renderer: THREE.WebGLRenderer,
     scene: THREE.Scene,
@@ -39,15 +65,7 @@ export class DefaultEnvAdapter implements EnvAdapter {
     getCollisionBoxes: () => THREE.Box3[] | undefined,
     getCollisionObjects: () => THREE.Object3D[] | undefined,
     getTeleportTargetObjects: () => THREE.Object3D[] | undefined,
-    options?: {
-      isLowSpecMode?: boolean;
-      getAudioListener?: () => THREE.AudioListener;
-      getInteractableObjects?: () => THREE.Object3D[] | undefined;
-      onCursorHover?: (el: THREE.Object3D) => void;
-      onCursorLeave?: (el: THREE.Object3D) => void;
-      onSelectUp?: (el: THREE.Object3D, point: THREE.Vector3) => void;
-      onSelectDown?: (el: THREE.Object3D, point: THREE.Vector3) => void;
-    }
+    options?: DefaultEnvAdapterOptions
   ) {
     this._renderer = renderer;
     // AFrame library sets non-WebXRManager instances in renderer.xr.

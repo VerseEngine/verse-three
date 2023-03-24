@@ -6,8 +6,14 @@
  * @packageDocumentation
  */
 export type { EnvAdapter } from "./env-adapter";
-export { DefaultEnvAdapter } from "./default-env-adapter";
-export { AFrameEnvAdapter } from "./aframe-env-adapter";
+export {
+  DefaultEnvAdapter,
+  DefaultEnvAdapterOptions,
+} from "./default-env-adapter";
+export {
+  AFrameEnvAdapter,
+  AFrameEnvAdapterOptions,
+} from "./aframe-env-adapter";
 export { isLowSpecDevice } from "@verseengine/three-avatar";
 export type { AppGuiHandlers } from "./gui-handlers";
 export type { Player } from "./player";
