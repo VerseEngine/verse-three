@@ -1,7 +1,13 @@
 {
   "name": "@verseengine/verse-three",
   "version": "1.0.0",
-  "description": "",
+  "description": "Web-based Metaverse Engine on P2P overlay network for three.js.",
+  "author": "Appland, Inc",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VerseEngine/verse-three"
+  },
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
