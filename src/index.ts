@@ -340,7 +340,7 @@ async function _start(
       rtcConfiguration: {
         iceServers,
       } as RTCConfiguration,
-      logLevel: "trace",
+      logLevel: "info",
     }
   );
 

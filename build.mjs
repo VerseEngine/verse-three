@@ -93,6 +93,7 @@ const distWasmName = createChecksumCopy(
 
 for (const file of [
   "example/index.html",
+  "example/text.html",
   "demo/index.html",
   "example/setup-verse.js",
   "demo/setup-verse.js",

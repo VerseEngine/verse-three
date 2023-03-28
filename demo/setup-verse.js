@@ -1,7 +1,7 @@
 import * as VerseThree from "@verseengine/verse-three";
 import { createBGMController, isCrossOriginBGM } from "./world";
 
-const VERSE_WASM_URL = "../dist/verse_core_bg.982d6594540c209c.wasm";
+const VERSE_WASM_URL = "../dist/verse_core_bg.f55d979133679f95.wasm";
 const ENTRANCE_SERVER_URL = "https://entrance.verseengine.cloud";
 const ANIMATION_MAP = {
   idle: "./asset/animation/idle.fbx",
@@ -68,5 +68,5 @@ export const setupVerse = async (
     }
   );
   console.log("verse ready");
-  return res.tick;
+  return { ...res, adapter };
 };

@@ -52,7 +52,7 @@ export class OtherPerson implements VerseCore.OtherPerson {
   private _iid?: number;
   private _onVoiceVolumeChanged: (volume: number) => void;
   private _ms?: MediaStream;
-  private _name?: string;
+  private _textData?: string;
   private _elapsedTime = 0;
   private _moveIntervalSec = 0;
   private _moveSec = 0;
@@ -133,13 +133,14 @@ export class OtherPerson implements VerseCore.OtherPerson {
     }, 1000);
   }
   /**
-   * Implementation of `@verseengine/verser-core#OtherPerson.setName`
+   * Implementation of `@verseengine/verser-core#OtherPerson.setTextData`
    */
-  setName(name: string) {
-    this._name = name;
+  setTextData(textData: string) {
+    this._textData = textData;
+    this._adapter.onTextDataChanged(this, textData);
   }
-  getName() {
-    return this._name;
+  getTextData() {
+    return this._textData;
   }
   /**
    * Implementation of `@verseengine/verser-core#OtherPerson.changeAvatar`

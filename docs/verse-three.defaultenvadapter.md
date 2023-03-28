@@ -25,6 +25,7 @@ export declare class DefaultEnvAdapter implements EnvAdapter
 |  --- | --- | --- |
 |  [addAudioCreateJob(f)](./verse-three.defaultenvadapter.addaudiocreatejob.md) |  | Execute the process of starting audio playback. |
 |  [addAvatarChangedListener(listener)](./verse-three.defaultenvadapter.addavatarchangedlistener.md) |  | Add an event handler to receive avatar change events. |
+|  [addTextDataChangedListener(listener)](./verse-three.defaultenvadapter.addtextdatachangedlistener.md) |  | Add an event handler to receive text data change events. |
 |  [addTickListener(listener)](./verse-three.defaultenvadapter.addticklistener.md) |  | Add a process that is called periodically. |
 |  [addVoiceVolumeChangeListener(f)](./verse-three.defaultenvadapter.addvoicevolumechangelistener.md) |  | Add an event handler to receive voice chat volume change events. |
 |  [getAudioListener()](./verse-three.defaultenvadapter.getaudiolistener.md) |  | [THREE.AudioListener](https://threejs.org/docs/#api/en/audio/AudioListener) placed at the player avatar's ear position |
@@ -49,7 +50,9 @@ export declare class DefaultEnvAdapter implements EnvAdapter
 |  [onGuiClick()](./verse-three.defaultenvadapter.onguiclick.md) |  | Called when any GUI element is clicked. |
 |  [onSelectDown(el, point)](./verse-three.defaultenvadapter.onselectdown.md) |  | Select button press event handler. like [mousedown](https://developer.mozilla.org/en-US/docs/Web/API/Element/mousedown_event)<!-- -->. |
 |  [onSelectUp(el, point)](./verse-three.defaultenvadapter.onselectup.md) |  | Select button release event handler. like [mouseup](https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseup_event)<!-- -->. |
+|  [onTextDataChanged(person, textData)](./verse-three.defaultenvadapter.ontextdatachanged.md) |  | TextData change event handler. |
 |  [removeAvatarChangedListener(listener)](./verse-three.defaultenvadapter.removeavatarchangedlistener.md) |  | Remove an event handler to receive avatar change events. |
+|  [removeTextDataChangedListener(listener)](./verse-three.defaultenvadapter.removetextdatachangedlistener.md) |  | Remove an event handler to receive text data change events. |
 |  [removeTickListener(listener)](./verse-three.defaultenvadapter.removeticklistener.md) |  | Remove a process that is called periodically. |
 |  [removeVoiceVolumeChangeListener(f)](./verse-three.defaultenvadapter.removevoicevolumechangelistener.md) |  | Remove event handler for receiving voice chat volume change events. |
 |  [setVoiceVolume(volume)](./verse-three.defaultenvadapter.setvoicevolume.md) |  | Set the volume of voice chat |

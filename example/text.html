@@ -13,6 +13,20 @@
         margin: 0;
         overflow: hidden;
       }
+      #text-pane {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        gap: 0.5rem;
+        background: rgba(221, 186, 255, 0.5);
+        padding: 0.5rem;
+      }
+      #text-out {
+        height: 8rem;
+      }
     </style>
     <script
       async
@@ -42,7 +56,13 @@
       // Piano jazz station - https://dir.xiph.org/search?q=Piano+jazz+station
       // const BGM_URL = "https://radio108.ru:8150/stream";
 
-      const main = () => {
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", main);
+      } else {
+        main();
+      }
+
+      function main() {
         const collisionObjects = [];
         const teleportTargetObjects = [];
         const interactableObjects = [];
@@ -74,10 +94,10 @@
         camera.position.set(0.0, 1.6, 0);
         const cameraContainer = new THREE.Object3D();
         cameraContainer.add(camera);
-        const player = new THREE.Object3D();
-        player.name = "player";
-        player.add(cameraContainer);
-        scene.add(player);
+        const playerObj = new THREE.Object3D();
+        playerObj.name = "player";
+        playerObj.add(cameraContainer);
+        scene.add(playerObj);
         scene.updateMatrix();
 
         setupVerse(
@@ -85,22 +105,53 @@
           renderer,
           camera,
           cameraContainer,
-          player,
+          playerObj,
           collisionBoxes,
           collisionObjects,
           interactableObjects,
           teleportTargetObjects,
           BGM_URL
-        ).then(({ tick }) => {
+        ).then(({ tick, adapter, player }) => {
           _tick = tick;
+          setupTextForm(player, adapter);
         });
-      };
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", main);
-      } else {
-        main();
+      }
+
+      function setupTextForm(player, adapter) {
+        const textOut = document.querySelector("#text-out");
+        document.querySelector("input[name='nickname']").value =
+          localStorage.nickname || "";
+
+        const outputMessage = (data) => {
+          const nickname = data.nickname.trim();
+          const message = data.message.trim();
+          if (nickname !== "" && message !== "") {
+            textOut.value += `${nickname}: ${message}\n`;
+          }
+        };
+
+        document.querySelector("#text-form").addEventListener("submit", (e) => {
+          e.preventDefault();
+          const data = Object.fromEntries(new FormData(e.target).entries());
+          localStorage.nickname = data.nickname;
+          player.setTextData(JSON.stringify({ textMessage: data }));
+          outputMessage(data);
+        });
+        adapter.addTextDataChangedListener((otherPerson, textData) => {
+          const data = JSON.parse(textData)?.textMessage;
+          outputMessage(data);
+        });
       }
     </script>
   </head>
-  <body></body>
+  <body>
+    <div id="text-pane">
+      <form id="text-form">
+        <input type="text" name="nickname" placeholder="nickname" />
+        <input type="text" name="message" placeholder="message" />
+        <button type="submit">Send</button>
+      </form>
+      <textarea id="text-out" readonly></textarea>
+    </div>
+  </body>
 </html>

@@ -2,6 +2,7 @@ import * as THREE from "three";
 import type { EnvAdapter, TickListener } from "./env-adapter";
 import { isIOS } from "./util";
 import { Avatar } from "@verseengine/three-avatar";
+import { OtherPerson } from "./other-person";
 
 /**
  * see: {@link DefaultEnvAdapter}
@@ -48,6 +49,9 @@ export class DefaultEnvAdapter implements EnvAdapter {
   private _onSelectUp?: (el: THREE.Object3D, point: THREE.Vector3) => void;
   private _onSelectDown?: (el: THREE.Object3D, point: THREE.Vector3) => void;
   private _avatarChangedListeners: Array<(avatar: Avatar) => void> = [];
+  private _textDataChangedListeners: Array<
+    (person: OtherPerson, textData: string) => void
+  > = [];
 
   /**
    * @param headOffset - head offset object.
@@ -256,6 +260,26 @@ export class DefaultEnvAdapter implements EnvAdapter {
   /** {@inheritDoc EnvAdapter.removeAvatarChangedListener} */
   removeAvatarChangedListener(listener: (avatar: Avatar) => void): void {
     this._avatarChangedListeners = this._avatarChangedListeners.filter(
+      (v) => v != listener
+    );
+  }
+  /** {@inheritDoc EnvAdapter.onTextDataChanged} */
+  onTextDataChanged(person: OtherPerson, textData: string): void {
+    for (const l of this._textDataChangedListeners) {
+      l(person, textData);
+    }
+  }
+  /** {@inheritDoc EnvAdapter.addTextDataChangedListener} */
+  addTextDataChangedListener(
+    listener: (person: OtherPerson, textData: string) => void
+  ): void {
+    this._textDataChangedListeners.push(listener);
+  }
+  /** {@inheritDoc EnvAdapter.removeTextDataChangedListener} */
+  removeTextDataChangedListener(
+    listener: (person: OtherPerson, textData: string) => void
+  ): void {
+    this._textDataChangedListeners = this._textDataChangedListeners.filter(
       (v) => v != listener
     );
   }

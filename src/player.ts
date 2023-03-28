@@ -37,7 +37,8 @@ export class Player implements VerseCore.Player {
   private _adapter: EnvAdapter;
   private _onAvatarChanged: (p: Player, avatarData: ArrayBuffer) => void;
   private _handHolder?: HandHolder;
-  private _name?: string;
+  private _textData?: string;
+  private _textDataChanged: Date | null;
 
   static async create(
     url: string | undefined | null,
@@ -64,6 +65,7 @@ export class Player implements VerseCore.Player {
   ) {
     this._avatarChanged = null;
     this._onAvatarChanged = onAvatarChanged;
+    this._textDataChanged = null;
     this._adapter = adapter;
     this._handHolder = handHolder;
     this._object3D = new THREE.Object3D();
@@ -90,13 +92,20 @@ export class Player implements VerseCore.Player {
     return this._adapter.getCameraRig().rotation.y;
   }
   /**
-   * Implementation of `@verseengine/verser-core#Player.getName`
+   * Implementation of `@verseengine/verser-core#Player.getTextData`
    */
-  getName() {
-    return this._name;
+  getTextData() {
+    return this._textData;
   }
-  setName(name: string) {
-    this._name = name;
+  setTextData(textData: string) {
+    this._textData = textData;
+    this._textDataChanged = new Date();
+  }
+  /**
+   * Implementation of `@verseengine/verser-core#Player.getTextDataChanged`
+   */
+  getTextDataChanged() {
+    return this._textDataChanged;
   }
   /**
    * Implementation of `@verseengine/verser-core#Player.getAvatar`

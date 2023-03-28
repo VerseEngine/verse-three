@@ -35,12 +35,13 @@ export declare class Player implements VerseCore.Player
 |  [getAngle()](./verse-three.player.getangle.md) |  | Implementation of <code>@verseengine/verser-core#Player.getAngle</code> |
 |  [getAvatar()](./verse-three.player.getavatar.md) |  | Implementation of <code>@verseengine/verser-core#Player.getAvatar</code> |
 |  [getAvatarChanged()](./verse-three.player.getavatarchanged.md) |  | Implementation of <code>@verseengine/verser-core#Player.getAvatarChanged</code> |
-|  [getName()](./verse-three.player.getname.md) |  | Implementation of <code>@verseengine/verser-core#Player.getName</code> |
 |  [getPosition()](./verse-three.player.getposition.md) |  | Implementation of <code>@verseengine/verser-core#Player.getPosition</code> |
+|  [getTextData()](./verse-three.player.gettextdata.md) |  | Implementation of <code>@verseengine/verser-core#Player.getTextData</code> |
+|  [getTextDataChanged()](./verse-three.player.gettextdatachanged.md) |  | Implementation of <code>@verseengine/verser-core#Player.getTextDataChanged</code> |
 |  [onRequestDetailStream(factory)](./verse-three.player.onrequestdetailstream.md) |  | Implementation of <code>@verseengine/verser-core#Player.onRequestDetailStream</code> |
 |  [setAvatarData(fileData)](./verse-three.player.setavatardata.md) |  |  |
 |  [setAvatarURL(url, fileData)](./verse-three.player.setavatarurl.md) |  |  |
-|  [setName(name)](./verse-three.player.setname.md) |  |  |
+|  [setTextData(textData)](./verse-three.player.settextdata.md) |  |  |
 |  [setupNonVR()](./verse-three.player.setupnonvr.md) |  |  |
 |  [setupVR()](./verse-three.player.setupvr.md) |  |  |
 |  [tick(deltaTime)](./verse-three.player.tick.md) |  | Processes called periodically. |

@@ -1,5 +1,6 @@
 import type * as THREE from "three";
 import { Avatar } from "@verseengine/three-avatar";
+import { OtherPerson } from "./other-person";
 
 export interface TickListener {
   /**
@@ -217,4 +218,21 @@ export interface EnvAdapter {
    *  Remove an event handler to receive avatar change events.
    */
   removeAvatarChangedListener(listener: (avatar: Avatar) => void): void;
+
+  /**
+   * TextData change event handler.
+   */
+  onTextDataChanged(person: OtherPerson, textData: string): void;
+  /**
+   *  Add an event handler to receive text data change events.
+   */
+  addTextDataChangedListener(
+    listener: (person: OtherPerson, textData: string) => void
+  ): void;
+  /**
+   *  Remove an event handler to receive text data change events.
+   */
+  removeTextDataChangedListener(
+    listener: (person: OtherPerson, textData: string) => void
+  ): void;
 }
