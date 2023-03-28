@@ -4,7 +4,7 @@
 
 ## Player.onRequestDetailStream() method
 
-Implementation of `@verseengine/verser-core#Player.onRequestDetailStream`
+Implementation of `@verseengine/verse-core#Player.onRequestDetailStream`
 
 **Signature:**
 

@@ -17,6 +17,7 @@ export {
 export { isLowSpecDevice } from "@verseengine/three-avatar";
 export type { AppGuiHandlers } from "./gui-handlers";
 export type { Player } from "./player";
+export type { OtherPerson } from "./other-person";
 
 import * as THREE from "three";
 import type { EnvAdapter } from "./env-adapter";

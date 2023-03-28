@@ -4,7 +4,7 @@
 
 ## Player.getTextDataChanged() method
 
-Implementation of `@verseengine/verser-core#Player.getTextDataChanged`
+Implementation of `@verseengine/verse-core#Player.getTextDataChanged`
 
 **Signature:**
 

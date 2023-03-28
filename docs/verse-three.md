@@ -16,7 +16,8 @@ see: [start()](./verse-three.start.md)
 |  --- | --- |
 |  [AFrameEnvAdapter](./verse-three.aframeenvadapter.md) | [EnvAdapter](./verse-three.envadapter.md) implementation for [AFrame](https://aframe.io/)<!-- -->. |
 |  [DefaultEnvAdapter](./verse-three.defaultenvadapter.md) | Default implementation of [EnvAdapter](./verse-three.envadapter.md)<!-- -->. |
-|  [Player](./verse-three.player.md) | Implementation of <code>@verseengine/verser-core#Player</code>. |
+|  [OtherPerson](./verse-three.otherperson.md) | Implementation of [@verseengine/verser-core\#OtherPerson](https://github.com/VerseEngine/verse-core/blob/main/docs/verse-core.otherperson.md)<!-- -->. |
+|  [Player](./verse-three.player.md) | Implementation of [@verseengine/verse-core\#Player](https://github.com/VerseEngine/verse-core/blob/main/docs/verse-core.player.md)<!-- -->. |
 
 ## Functions
 

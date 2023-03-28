@@ -4,7 +4,7 @@
 
 ## Player.getAvatar() method
 
-Implementation of `@verseengine/verser-core#Player.getAvatar`
+Implementation of `@verseengine/verse-core#Player.getAvatar`
 
 **Signature:**
 

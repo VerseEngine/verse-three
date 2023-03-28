@@ -16,7 +16,7 @@ onTextDataChanged(person: OtherPerson, textData: string): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  person | OtherPerson |  |
+|  person | [OtherPerson](./verse-three.otherperson.md) |  |
 |  textData | string |  |
 
 **Returns:**

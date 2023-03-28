@@ -4,7 +4,7 @@
 
 ## Player class
 
-Implementation of `@verseengine/verser-core#Player`<!-- -->.
+Implementation of [@verseengine/verse-core\#Player](https://github.com/VerseEngine/verse-core/blob/main/docs/verse-core.player.md)<!-- -->.
 
 **Signature:**
 
@@ -32,13 +32,13 @@ export declare class Player implements VerseCore.Player
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
 |  [create(url, data, adapter, onAvatarChanged, handHolder)](./verse-three.player.create.md) | <code>static</code> |  |
-|  [getAngle()](./verse-three.player.getangle.md) |  | Implementation of <code>@verseengine/verser-core#Player.getAngle</code> |
-|  [getAvatar()](./verse-three.player.getavatar.md) |  | Implementation of <code>@verseengine/verser-core#Player.getAvatar</code> |
-|  [getAvatarChanged()](./verse-three.player.getavatarchanged.md) |  | Implementation of <code>@verseengine/verser-core#Player.getAvatarChanged</code> |
-|  [getPosition()](./verse-three.player.getposition.md) |  | Implementation of <code>@verseengine/verser-core#Player.getPosition</code> |
-|  [getTextData()](./verse-three.player.gettextdata.md) |  | Implementation of <code>@verseengine/verser-core#Player.getTextData</code> |
-|  [getTextDataChanged()](./verse-three.player.gettextdatachanged.md) |  | Implementation of <code>@verseengine/verser-core#Player.getTextDataChanged</code> |
-|  [onRequestDetailStream(factory)](./verse-three.player.onrequestdetailstream.md) |  | Implementation of <code>@verseengine/verser-core#Player.onRequestDetailStream</code> |
+|  [getAngle()](./verse-three.player.getangle.md) |  | Implementation of <code>@verseengine/verse-core#Player.getAngle</code> |
+|  [getAvatar()](./verse-three.player.getavatar.md) |  | Implementation of <code>@verseengine/verse-core#Player.getAvatar</code> |
+|  [getAvatarChanged()](./verse-three.player.getavatarchanged.md) |  | Implementation of <code>@verseengine/verse-core#Player.getAvatarChanged</code> |
+|  [getPosition()](./verse-three.player.getposition.md) |  | Implementation of <code>@verseengine/verse-core#Player.getPosition</code> |
+|  [getTextData()](./verse-three.player.gettextdata.md) |  | Implementation of <code>@verseengine/verse-core#Player.getTextData</code> |
+|  [getTextDataChanged()](./verse-three.player.gettextdatachanged.md) |  | Implementation of <code>@verseengine/verse-core#Player.getTextDataChanged</code> |
+|  [onRequestDetailStream(factory)](./verse-three.player.onrequestdetailstream.md) |  | Implementation of <code>@verseengine/verse-core#Player.onRequestDetailStream</code> |
 |  [setAvatarData(fileData)](./verse-three.player.setavatardata.md) |  |  |
 |  [setAvatarURL(url, fileData)](./verse-three.player.setavatarurl.md) |  |  |
 |  [setTextData(textData)](./verse-three.player.settextdata.md) |  |  |

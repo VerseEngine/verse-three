@@ -26,7 +26,7 @@ export interface OtherPersonOptions {
 }
 
 /**
- * Implementation of `@verseengine/verser-core#OtherPerson`.
+ * Implementation of {@link https://github.com/VerseEngine/verse-core/blob/main/docs/verse-core.otherperson.md | @verseengine/verser-core#OtherPerson}.
  */
 export class OtherPerson implements VerseCore.OtherPerson {
   // @ts-ignore
@@ -345,7 +345,7 @@ export class OtherPerson implements VerseCore.OtherPerson {
       console.warn("unexpected error", "OtherPerson.onDetailStream", ex);
     }
   }
-  _updateMouthPosition() {
+  private _updateMouthPosition() {
     const audio = this._audio;
     const avatar = this._avatar;
     if (!audio || !avatar) {

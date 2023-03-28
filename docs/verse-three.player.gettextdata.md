@@ -4,7 +4,7 @@
 
 ## Player.getTextData() method
 
-Implementation of `@verseengine/verser-core#Player.getTextData`
+Implementation of `@verseengine/verse-core#Player.getTextData`
 
 **Signature:**
 

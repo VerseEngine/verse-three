@@ -4,7 +4,7 @@
 
 ## Player.getPosition() method
 
-Implementation of `@verseengine/verser-core#Player.getPosition`
+Implementation of `@verseengine/verse-core#Player.getPosition`
 
 **Signature:**
 

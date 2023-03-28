@@ -19,7 +19,7 @@ const fetchAvatarData = async (url: string) => {
 };
 
 /**
- * Implementation of `@verseengine/verser-core#Player`.
+ * Implementation of {@link https://github.com/VerseEngine/verse-core/blob/main/docs/verse-core.player.md | @verseengine/verse-core#Player}.
  */
 export class Player implements VerseCore.Player {
   private _object3D: THREE.Object3D;
@@ -80,19 +80,19 @@ export class Player implements VerseCore.Player {
     return this._avatar;
   }
   /**
-   * Implementation of `@verseengine/verser-core#Player.getPosition`
+   * Implementation of `@verseengine/verse-core#Player.getPosition`
    */
   getPosition() {
     return this._adapter.getCameraRig().position;
   }
   /**
-   * Implementation of `@verseengine/verser-core#Player.getAngle`
+   * Implementation of `@verseengine/verse-core#Player.getAngle`
    */
   getAngle() {
     return this._adapter.getCameraRig().rotation.y;
   }
   /**
-   * Implementation of `@verseengine/verser-core#Player.getTextData`
+   * Implementation of `@verseengine/verse-core#Player.getTextData`
    */
   getTextData() {
     return this._textData;
@@ -102,13 +102,13 @@ export class Player implements VerseCore.Player {
     this._textDataChanged = new Date();
   }
   /**
-   * Implementation of `@verseengine/verser-core#Player.getTextDataChanged`
+   * Implementation of `@verseengine/verse-core#Player.getTextDataChanged`
    */
   getTextDataChanged() {
     return this._textDataChanged;
   }
   /**
-   * Implementation of `@verseengine/verser-core#Player.getAvatar`
+   * Implementation of `@verseengine/verse-core#Player.getAvatar`
    */
   getAvatar() {
     return {
@@ -116,13 +116,13 @@ export class Player implements VerseCore.Player {
     };
   }
   /**
-   * Implementation of `@verseengine/verser-core#Player.getAvatarChanged`
+   * Implementation of `@verseengine/verse-core#Player.getAvatarChanged`
    */
   getAvatarChanged() {
     return this._avatarChanged;
   }
   /**
-   * Implementation of `@verseengine/verser-core#Player.onRequestDetailStream`
+   * Implementation of `@verseengine/verse-core#Player.onRequestDetailStream`
    */
   onRequestDetailStream(factory: VerseCore.DetailInputStreamFactory) {
     (async () => {

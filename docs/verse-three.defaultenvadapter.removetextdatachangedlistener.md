@@ -16,7 +16,7 @@ removeTextDataChangedListener(listener: (person: OtherPerson, textData: string) 
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  listener | (person: OtherPerson, textData: string) =&gt; void |  |
+|  listener | (person: [OtherPerson](./verse-three.otherperson.md)<!-- -->, textData: string) =&gt; void |  |
 
 **Returns:**
 

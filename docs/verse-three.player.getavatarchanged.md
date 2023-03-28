@@ -4,7 +4,7 @@
 
 ## Player.getAvatarChanged() method
 
-Implementation of `@verseengine/verser-core#Player.getAvatarChanged`
+Implementation of `@verseengine/verse-core#Player.getAvatarChanged`
 
 **Signature:**
 

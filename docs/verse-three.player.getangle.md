@@ -4,7 +4,7 @@
 
 ## Player.getAngle() method
 
-Implementation of `@verseengine/verser-core#Player.getAngle`
+Implementation of `@verseengine/verse-core#Player.getAngle`
 
 **Signature:**
 
