@@ -266,22 +266,17 @@ export async function start(
   gui2d?.showLoading();
 
   await verseInit(wasmPath);
-  let res: VerseStartResult;
-  await Promise.all([
-    preLoadAnimationData(avatarAnimationDataSource),
-    (async () => {
-      res = await _start(
-        gui2d,
-        isVoiceDisabled,
-        adapter,
-        otherPeopleContainer,
-        entranceServerURL,
-        defaultAvatarURL,
-        iceServers,
-        options
-      );
-    })(),
-  ]);
+  await preLoadAnimationData(avatarAnimationDataSource);
+  const res = await _start(
+    gui2d,
+    isVoiceDisabled,
+    adapter,
+    otherPeopleContainer,
+    entranceServerURL,
+    defaultAvatarURL,
+    iceServers,
+    options
+  );
 
   gui2d?.ready();
   // @ts-ignore
