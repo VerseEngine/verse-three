@@ -14,7 +14,7 @@ export {
   AFrameEnvAdapter,
   AFrameEnvAdapterOptions,
 } from "./aframe-env-adapter";
-export { isLowSpecDevice } from "@verseengine/three-avatar";
+export * from "@verseengine/three-avatar";
 export type { AppGuiHandlers } from "./gui-handlers";
 export type { Player } from "./player";
 export type { OtherPerson } from "./other-person";
