@@ -9,9 +9,19 @@
     <meta name="robots" content="noindex,nofollow" />
     <meta name="referrer" content="no-referrer" />
     <style>
+      html,
+      body {
+        overscroll-behavior-y: none;
+      }
       body {
         margin: 0;
         overflow: hidden;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      canvas {
+        user-select: none;
+        -webkit-user-select: none;
       }
       #text-pane {
         position: absolute;
@@ -40,7 +50,7 @@
           "@pixiv/three-vrm": "https://cdn.jsdelivr.net/npm/@pixiv/three-vrm@1.0.9/lib/three-vrm.module.min.js",
           "./setup": "./setup.js",
           "./world": "./world.js",
-          "verse-three": "../dist/esm/index.de48220b35a7a038.min.js",
+          "verse-three": "../dist/esm/index.9fd9639be99f92e3.min.js",
           "./setup-verse": "./setup-verse.js"
         }
       }
