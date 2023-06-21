@@ -1,6 +1,6 @@
 {
   "name": "@verseengine/verse-three",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Web-based Metaverse Engine on P2P overlay network for three.js.",
   "author": "Appland, Inc",
   "license": "MIT",
@@ -11,6 +11,12 @@
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
+  "homepage": "https://verseengine.cloud/",
+  "keywords": [
+    "vr",
+    "3d",
+    "metaverse"
+  ],
   "scripts": {
     "example": "npm run build && npx http-server -c-1 -p 8080",
     "example-ssl": "npm run build && npx http-server -c-1 --ssl --key ./cert/localhost+2-key.pem --cert ./cert/localhost+2.pem -p 8080",
@@ -20,7 +26,7 @@
     "build": "run-p build:*",
     "build:js": "node build.mjs",
     "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/esm",
-    "postbuild": "npx api-extractor run --local --verbose && npx api-documenter markdown -i dist/temp/ -o ./docs",
+    "postbuild": "npx api-extractor run --local --verbose && npx api-documenter markdown -i dist/temp/ -o ./docs && rimraf dist/temp/",
     "lint": "tsc --noEmit && npx eslint .",
     "check-update": "ncu"
   },
@@ -31,12 +37,12 @@
     "@microsoft/api-documenter": "^7.21.5",
     "@microsoft/api-extractor": "^7.34.4",
     "@msgpack/msgpack": "^2.8.0",
-    "@verseengine/three-avatar": "git+ssh://git@github.com.verseengine:VerseEngine/three-avatar.git",
-    "@verseengine/three-move-controller": "git+ssh://git@github.com.verseengine:VerseEngine/three-move-controller.git",
-    "@verseengine/three-touch-controller": "git+ssh://git@github.com.verseengine:VerseEngine/three-touch-controller.git",
-    "@verseengine/three-xr-controller": "git+ssh://git@github.com.verseengine:VerseEngine/three-xr-controller.git",
-    "@verseengine/verse-three-ui": "git+ssh://git@github.com.verseengine:VerseEngine/verse-three-ui.git",
-    "@verseengine/verse-core": "git+ssh://git@github.com.verseengine:VerseEngine/verse-core.git",
+    "@verseengine/three-avatar": "^1",
+    "@verseengine/three-move-controller": "^1",
+    "@verseengine/three-touch-controller": "^1",
+    "@verseengine/three-xr-controller": "^1",
+    "@verseengine/verse-three-ui": "^1",
+    "@verseengine/verse-core": "^1",
     "buffered-interpolation": "github:Infinitelee/buffered-interpolation",
     "three": ">=0.146.0"
   },

@@ -46,3 +46,33 @@ npm run example-ssl
 ```
 
 https://localhost:8080/demo/
+
+
+## Installation
+### npm
+```bash
+npm install @verseengine/verse-three
+```
+
+### CDN (ES Mobules)
+```html
+<script
+      async
+      src="https://cdn.jsdelivr.net/npm/es-module-shims@1.6.2/dist/es-module-shims.min.js"
+    ></script>
+<script type="importmap">
+  {
+    "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.150.0/build/three.module.js",
+        "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/three@0.150.0/examples/jsm/",
+        "@pixiv/three-vrm": "https://cdn.jsdelivr.net/npm/@pixiv/three-vrm@1.0.9/lib/three-vrm.module.min.js",
+        "verse-three": "https://cdn.jsdelivr.net/npm/@verseengine/verse-three@1.0.0/dist/esm/index.min.js"
+    }
+  }
+</script>
+<script>
+const VERSE_WASM_URL =
+  "https://cdn.jsdelivr.net/npm/@verseengine/verse-three@1.0.0/dist/verse_core_bg.wasm";
+...
+</script>
+```
