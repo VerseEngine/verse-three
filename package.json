@@ -1,6 +1,6 @@
 {
   "name": "@verseengine/verse-three",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Web-based Metaverse Engine on P2P overlay network for three.js.",
   "author": "Appland, Inc",
   "license": "MIT",
@@ -28,7 +28,7 @@
     "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/esm",
     "postbuild": "npx api-extractor run --local --verbose && npx api-documenter markdown -i dist/temp/ -o ./docs && rimraf dist/temp/",
     "lint": "tsc --noEmit && npx eslint .",
-    "check-update": "ncu"
+    "check-update": "npx npm-check-updates"
   },
   "files": [
     "dist"
@@ -57,7 +57,6 @@
     "esbuild-plugin-external-global": "^1.0.1",
     "eslint": "^8.34.0",
     "eslint-plugin-tsdoc": "^0.2.17",
-    "npm-check-updates": "^16.7.4",
     "npm-run-all": "^4.1.5",
     "rimraf": "^4.1.2",
     "typescript": "^4.9.5",
