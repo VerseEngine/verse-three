@@ -220,6 +220,23 @@ export interface EnvAdapter {
   removeAvatarChangedListener(listener: (avatar: Avatar) => void): void;
 
   /**
+   * OtherPerson’s avatar change event handler.
+   */
+  onOtherPersonAvatarChanged(person: OtherPerson): void;
+  /**
+   *  Add an event handler to receive OtherPerson’s avatar change events.
+   */
+  addOtherPersonAvatarChangedListener(
+    listener: (person: OtherPerson) => void
+  ): void;
+  /**
+   *  Remove an event handler to receive OtherPerson’s avatar change events.
+   */
+  removeOtherPersonAvatarChangedListener(
+    listener: (person: OtherPerson) => void
+  ): void;
+
+  /**
    * TextData change event handler.
    */
   onTextDataChanged(person: OtherPerson, textData: string): void;

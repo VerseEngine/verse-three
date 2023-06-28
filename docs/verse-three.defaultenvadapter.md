@@ -25,6 +25,7 @@ export declare class DefaultEnvAdapter implements EnvAdapter
 |  --- | --- | --- |
 |  [addAudioCreateJob(f)](./verse-three.defaultenvadapter.addaudiocreatejob.md) |  | Execute the process of starting audio playback. |
 |  [addAvatarChangedListener(listener)](./verse-three.defaultenvadapter.addavatarchangedlistener.md) |  | Add an event handler to receive avatar change events. |
+|  [addOtherPersonAvatarChangedListener(listener)](./verse-three.defaultenvadapter.addotherpersonavatarchangedlistener.md) |  | Add an event handler to receive OtherPerson’s avatar change events. |
 |  [addTextDataChangedListener(listener)](./verse-three.defaultenvadapter.addtextdatachangedlistener.md) |  | Add an event handler to receive text data change events. |
 |  [addTickListener(listener)](./verse-three.defaultenvadapter.addticklistener.md) |  | Add a process that is called periodically. |
 |  [addVoiceVolumeChangeListener(f)](./verse-three.defaultenvadapter.addvoicevolumechangelistener.md) |  | Add an event handler to receive voice chat volume change events. |
@@ -48,10 +49,12 @@ export declare class DefaultEnvAdapter implements EnvAdapter
 |  [onCursorHover(el)](./verse-three.defaultenvadapter.oncursorhover.md) |  | Cursor hover event handler. like [mouseover](https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseover_event)<!-- -->. |
 |  [onCursorLeave(el)](./verse-three.defaultenvadapter.oncursorleave.md) |  | Cursor leave event handler. like [mouseleave](https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseleave_event)<!-- -->. |
 |  [onGuiClick()](./verse-three.defaultenvadapter.onguiclick.md) |  | Called when any GUI element is clicked. |
+|  [onOtherPersonAvatarChanged(person)](./verse-three.defaultenvadapter.onotherpersonavatarchanged.md) |  | OtherPerson’s avatar change event handler. |
 |  [onSelectDown(el, point)](./verse-three.defaultenvadapter.onselectdown.md) |  | Select button press event handler. like [mousedown](https://developer.mozilla.org/en-US/docs/Web/API/Element/mousedown_event)<!-- -->. |
 |  [onSelectUp(el, point)](./verse-three.defaultenvadapter.onselectup.md) |  | Select button release event handler. like [mouseup](https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseup_event)<!-- -->. |
 |  [onTextDataChanged(person, textData)](./verse-three.defaultenvadapter.ontextdatachanged.md) |  | TextData change event handler. |
 |  [removeAvatarChangedListener(listener)](./verse-three.defaultenvadapter.removeavatarchangedlistener.md) |  | Remove an event handler to receive avatar change events. |
+|  [removeOtherPersonAvatarChangedListener(listener)](./verse-three.defaultenvadapter.removeotherpersonavatarchangedlistener.md) |  | Remove an event handler to receive OtherPerson’s avatar change events. |
 |  [removeTextDataChangedListener(listener)](./verse-three.defaultenvadapter.removetextdatachangedlistener.md) |  | Remove an event handler to receive text data change events. |
 |  [removeTickListener(listener)](./verse-three.defaultenvadapter.removeticklistener.md) |  | Remove a process that is called periodically. |
 |  [removeVoiceVolumeChangeListener(f)](./verse-three.defaultenvadapter.removevoicevolumechangelistener.md) |  | Remove event handler for receiving voice chat volume change events. |

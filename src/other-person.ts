@@ -177,6 +177,7 @@ export class OtherPerson implements VerseCore.OtherPerson {
       this._biSyncBones = this._avatar.syncTargetBones.map(
         (_) => new InterpolationBuffer(InterpolationBuffer.MODE_LERP, 0.3)
       );
+      this._adapter.onOtherPersonAvatarChanged(this);
     })();
   }
   /**

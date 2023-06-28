@@ -49,6 +49,9 @@ export class DefaultEnvAdapter implements EnvAdapter {
   private _onSelectUp?: (el: THREE.Object3D, point: THREE.Vector3) => void;
   private _onSelectDown?: (el: THREE.Object3D, point: THREE.Vector3) => void;
   private _avatarChangedListeners: Array<(avatar: Avatar) => void> = [];
+  private _otherPersonAvatarChangedListeners: Array<
+    (person: OtherPerson) => void
+  > = [];
   private _textDataChangedListeners: Array<
     (person: OtherPerson, textData: string) => void
   > = [];
@@ -262,6 +265,25 @@ export class DefaultEnvAdapter implements EnvAdapter {
     this._avatarChangedListeners = this._avatarChangedListeners.filter(
       (v) => v != listener
     );
+  }
+  /** {@inheritDoc EnvAdapter.onOtherPersonAvatarChanged} */
+  onOtherPersonAvatarChanged(person: OtherPerson): void {
+    for (const l of this._otherPersonAvatarChangedListeners) {
+      l(person);
+    }
+  }
+  /** {@inheritDoc EnvAdapter.addOtherPersonAvatarChangedListener} */
+  addOtherPersonAvatarChangedListener(
+    listener: (person: OtherPerson) => void
+  ): void {
+    this._otherPersonAvatarChangedListeners.push(listener);
+  }
+  /** {@inheritDoc EnvAdapter.removeOtherPersonAvatarChangedListener} */
+  removeOtherPersonAvatarChangedListener(
+    listener: (person: OtherPerson) => void
+  ): void {
+    this._otherPersonAvatarChangedListeners =
+      this._otherPersonAvatarChangedListeners.filter((v) => v != listener);
   }
   /** {@inheritDoc EnvAdapter.onTextDataChanged} */
   onTextDataChanged(person: OtherPerson, textData: string): void {

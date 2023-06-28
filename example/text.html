@@ -37,6 +37,18 @@
       #text-out {
         height: 8rem;
       }
+      .name-label {
+        background-color: #fff;
+        color: #666;
+        border: 1px solid #666;
+        border-radius: 10px;
+        padding: 0px 5px;
+        font-family: sans-serif;
+        font-size: 14px;
+        min-width: 50px;
+        max-width: 200px;
+        text-align: center;
+      }
     </style>
     <script
       async
@@ -45,12 +57,12 @@
     <script type="importmap">
       {
         "imports": {
-          "three": "https://cdn.jsdelivr.net/npm/three@0.150.0/build/three.module.js",
-          "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/three@0.150.0/examples/jsm/",
-          "@pixiv/three-vrm": "https://cdn.jsdelivr.net/npm/@pixiv/three-vrm@1.0.9/lib/three-vrm.module.min.js",
+          "three": "https://cdn.jsdelivr.net/npm/three@0.153.0/build/three.module.js",
+          "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/three@0.153.0/examples/jsm/",
+          "@pixiv/three-vrm": "https://cdn.jsdelivr.net/npm/@pixiv/three-vrm@2/lib/three-vrm.module.min.js",
           "./setup": "./setup.js",
           "./world": "./world.js",
-          "verse-three": "../dist/esm/index.39ce20d1553f2a3a.min.js",
+          "verse-three": "../dist/esm/index.8c729faa6eb58c05.min.js",
           "./setup-verse": "./setup-verse.js"
         }
       }
@@ -60,6 +72,8 @@
       import { setupScene } from "./setup";
       import { setupVerse } from "./setup-verse";
       import { createWorldObjects } from "./world";
+      import { CSS3DRenderer } from "three/examples/jsm/renderers/CSS3DRenderer.js";
+      import { CSS3DObject } from "three/examples/jsm/renderers/CSS3DRenderer.js";
 
       // https://otowabi.com/music/20210806gohan
       const BGM_URL = "./asset/bgm/20210806gohan.mp3";
@@ -90,8 +104,19 @@
           });
         };
 
+        const labelRenderer = new CSS3DRenderer();
+        labelRenderer.setSize(window.innerWidth, window.innerHeight);
+        labelRenderer.domElement.style.position = "absolute";
+        labelRenderer.domElement.style.top = "0px";
+        labelRenderer.domElement.style.pointerEvents = "none";
+        document.body.appendChild(labelRenderer.domElement);
+        window.addEventListener("resize", () => {
+          labelRenderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
         let _tick = () => {};
         const ctx = setupScene((dt) => {
+          labelRenderer.render(ctx.scene, ctx.camera);
           _tick(dt);
         }, true);
         teleportTargetObjects.push(ctx.ground);
@@ -147,9 +172,40 @@
           player.setTextData(JSON.stringify({ textMessage: data }));
           outputMessage(data);
         });
+        const updateNameLabel = (otherPerson) => {
+          if (!otherPerson.nameLabel) {
+            const label = document.createElement("div");
+            label.className = "name-label";
+            otherPerson.nameLabel = label;
+
+            const cssObject = new CSS3DObject(label);
+            cssObject.scale.setScalar(0.01);
+            cssObject.rotation.set(0, THREE.MathUtils.degToRad(180), 0);
+            cssObject.visible = false;
+            otherPerson.cssObject = cssObject;
+            otherPerson.object3D.add(cssObject);
+          }
+          const bbox = new THREE.Box3().setFromObject(
+            otherPerson.avatar.object3D
+          );
+          otherPerson.cssObject.position.set(
+            0,
+            bbox.max.y - bbox.min.y + 0.3,
+            0
+          ); // Set the position above the character
+        };
         adapter.addTextDataChangedListener((otherPerson, textData) => {
           const data = JSON.parse(textData)?.textMessage;
           outputMessage(data);
+
+          updateNameLabel(otherPerson);
+          if (!otherPerson.cssObject.visible) {
+            otherPerson.cssObject.visible = true;
+          }
+          otherPerson.nameLabel.textContent = data.nickname;
+        });
+        adapter.addOtherPersonAvatarChangedListener((otherPerson) => {
+          updateNameLabel(otherPerson);
         });
       }
     </script>
