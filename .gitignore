@@ -4,3 +4,4 @@ node_modules/
 .DS_Store
 cert/
 vrm-example/
+package-lock.json
