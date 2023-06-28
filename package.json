@@ -1,6 +1,6 @@
 {
   "name": "@verseengine/verse-three",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Web-based Metaverse Engine on P2P overlay network for three.js.",
   "author": "Appland, Inc",
   "license": "MIT",

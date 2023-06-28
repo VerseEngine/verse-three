@@ -66,13 +66,13 @@ npm install @verseengine/verse-three
         "three": "https://cdn.jsdelivr.net/npm/three@0.150.0/build/three.module.js",
         "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/three@0.150.0/examples/jsm/",
         "@pixiv/three-vrm": "https://cdn.jsdelivr.net/npm/@pixiv/three-vrm@1.0.9/lib/three-vrm.module.min.js",
-        "verse-three": "https://cdn.jsdelivr.net/npm/@verseengine/verse-three@1.0.2/dist/esm/index.min.js"
+        "verse-three": "https://cdn.jsdelivr.net/npm/@verseengine/verse-three@1.0.3/dist/esm/index.min.js"
     }
   }
 </script>
 <script>
 const VERSE_WASM_URL =
-  "https://cdn.jsdelivr.net/npm/@verseengine/verse-three@1.0.2/dist/verse_core_bg.wasm";
+  "https://cdn.jsdelivr.net/npm/@verseengine/verse-three@1.0.3/dist/verse_core_bg.wasm";
 ...
 </script>
 ```
