@@ -23,6 +23,7 @@ export declare class OtherPerson implements VerseCore.OtherPerson
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
+|  [avatar](./verse-three.otherperson.avatar.md) | <code>readonly</code> | Avatar |  |
 |  [object3D](./verse-three.otherperson.object3d.md) | <code>readonly</code> | THREE.Object3D&lt;THREE.Event&gt; |  |
 
 ## Methods

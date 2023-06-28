@@ -92,6 +92,9 @@ export class OtherPerson implements VerseCore.OtherPerson {
   get object3D() {
     return this._object3D;
   }
+  get avatar() {
+    return this._avatar;
+  }
   setPosition(pos_x: number, pos_y: number, pos_z: number, angle: number) {
     this._object3D.position.set(pos_x, pos_y, pos_z);
     this._object3D.rotateY(angle);
