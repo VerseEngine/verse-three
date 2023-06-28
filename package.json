@@ -1,6 +1,6 @@
 {
   "name": "@verseengine/verse-three",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Web-based Metaverse Engine on P2P overlay network for three.js.",
   "author": "Appland, Inc",
   "license": "MIT",
@@ -44,13 +44,13 @@
     "@verseengine/verse-three-ui": "^1",
     "@verseengine/verse-core": "^1",
     "buffered-interpolation": "github:Infinitelee/buffered-interpolation",
-    "three": ">=0.146.0"
+    "three": ">=0.153.0"
   },
   "devDependencies": {
     "@microsoft/api-documenter": "^7.21.5",
     "@microsoft/api-extractor": "^7.34.4",
     "@types/aframe": "^1.2.2",
-    "@types/three": ">=0.146.0",
+    "@types/three": ">=0.152.1",
     "@typescript-eslint/eslint-plugin": "^5.52.0",
     "@typescript-eslint/parser": "^5.52.0",
     "esbuild": "^0.17.8",
