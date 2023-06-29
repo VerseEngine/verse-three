@@ -21,7 +21,7 @@ export declare class PlayerController
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [isVR](./verse-three.playercontroller.isvr.md) |  | boolean |  |
-|  [moveController](./verse-three.playercontroller.movecontroller.md) |  | MoveController |  |
-|  [touchController](./verse-three.playercontroller.touchcontroller.md) |  | TouchController |  |
+|  [moveController](./verse-three.playercontroller.movecontroller.md) |  | MoveController | [MoveController](https://github.com/VerseEngine/three-move-controller/blob/main/docs/three-move-controller.movecontroller.md) |
+|  [touchController](./verse-three.playercontroller.touchcontroller.md) |  | TouchController | [TouchController](https://github.com/VerseEngine/three-touch-controller/blob/main/docs/three-touch-controller.touchcontroller.md) |
 |  [xrController](./verse-three.playercontroller.xrcontroller.md) |  | DefaultXrControllerSet |  |
 

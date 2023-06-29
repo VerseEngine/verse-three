@@ -4,6 +4,8 @@
 
 ## PlayerController.touchController property
 
+[TouchController](https://github.com/VerseEngine/three-touch-controller/blob/main/docs/three-touch-controller.touchcontroller.md)
+
 **Signature:**
 
 ```typescript

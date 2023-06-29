@@ -4,6 +4,8 @@
 
 ## PlayerController.moveController property
 
+[MoveController](https://github.com/VerseEngine/three-move-controller/blob/main/docs/three-move-controller.movecontroller.md)
+
 **Signature:**
 
 ```typescript

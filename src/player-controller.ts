@@ -13,8 +13,11 @@ export type CouldBeClickableObject = THREE.Object3D & {
 };
 
 export class PlayerController {
+  /** {@link https://github.com/VerseEngine/three-touch-controller/blob/main/docs/three-touch-controller.touchcontroller.md | TouchController } */
   touchController: TouchController;
+  /** {@link https://github.com/VerseEngine/three-move-controller/blob/main/docs/three-move-controller.movecontroller.md | MoveController} */
   moveController: MoveController;
+  /** {@link DefaultXrControllerSet | https://github.com/VerseEngine/three-xr-controller/blob/main/docs/three-xr-controller.defaultxrcontrollerset.md } */
   xrController: DefaultXrControllerSet;
   private _isVRMode = false;
   private _adapter: EnvAdapter;
