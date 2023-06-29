@@ -4,6 +4,7 @@
 
 ## PlayerController.xrController property
 
+[DefaultXrControllerSet](https://github.com/VerseEngine/three-xr-controller/blob/main/docs/three-xr-controller.defaultxrcontrollerset.md)
 
 **Signature:**
 

@@ -17,7 +17,7 @@ export class PlayerController {
   touchController: TouchController;
   /** {@link https://github.com/VerseEngine/three-move-controller/blob/main/docs/three-move-controller.movecontroller.md | MoveController} */
   moveController: MoveController;
-  /** {@link DefaultXrControllerSet | https://github.com/VerseEngine/three-xr-controller/blob/main/docs/three-xr-controller.defaultxrcontrollerset.md } */
+  /** {@link https://github.com/VerseEngine/three-xr-controller/blob/main/docs/three-xr-controller.defaultxrcontrollerset.md | DefaultXrControllerSet } */
   xrController: DefaultXrControllerSet;
   private _isVRMode = false;
   private _adapter: EnvAdapter;
