@@ -18,6 +18,7 @@ export * from "@verseengine/three-avatar";
 export type { AppGuiHandlers } from "./gui-handlers";
 export type { Player } from "./player";
 export type { OtherPerson } from "./other-person";
+export type { PlayerController } from "./player-controller";
 
 import * as THREE from "three";
 import type { EnvAdapter } from "./env-adapter";

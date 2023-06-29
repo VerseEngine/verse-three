@@ -15,5 +15,5 @@ export type VerseStartResult = {
     tick: (deltaTime: number) => void;
 };
 ```
-**References:** [AppGuiHandlers](./verse-three.appguihandlers.md)<!-- -->, [Player](./verse-three.player.md)
+**References:** [AppGuiHandlers](./verse-three.appguihandlers.md)<!-- -->, [Player](./verse-three.player.md)<!-- -->, [PlayerController](./verse-three.playercontroller.md)
 

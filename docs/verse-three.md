@@ -18,6 +18,7 @@ see: [start()](./verse-three.start.md)
 |  [DefaultEnvAdapter](./verse-three.defaultenvadapter.md) | Default implementation of [EnvAdapter](./verse-three.envadapter.md)<!-- -->. |
 |  [OtherPerson](./verse-three.otherperson.md) | Implementation of [@verseengine/verser-core\#OtherPerson](https://github.com/VerseEngine/verse-core/blob/main/docs/verse-core.otherperson.md)<!-- -->. |
 |  [Player](./verse-three.player.md) | Implementation of [@verseengine/verse-core\#Player](https://github.com/VerseEngine/verse-core/blob/main/docs/verse-core.player.md)<!-- -->. |
+|  [PlayerController](./verse-three.playercontroller.md) |  |
 
 ## Functions
 
