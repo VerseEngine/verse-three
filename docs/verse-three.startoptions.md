@@ -16,6 +16,7 @@ export interface StartOptions
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
+|  [gui2dSlots?](./verse-three.startoptions.gui2dslots.md) |  | string \| Node | _(Optional)_ Custom child elements for 2D UI see: [https://github.com/VerseEngine/verse-three-ui\#custom-buttons](https://github.com/VerseEngine/verse-three-ui#custom-buttons) |
 |  [isCrossOriginBGM?](./verse-three.startoptions.iscrossoriginbgm.md) |  | boolean | _(Optional)_ true if the BGM is loaded from a different domain. For crossorigin's source, there is no way to adjust volume in iOS Safari. (GainNode is not available in Mac Safari, but can be changed with Audio.volume) |
 |  [maxAvatarFileSize?](./verse-three.startoptions.maxavatarfilesize.md) |  | number | _(Optional)_ Maximum size of avatar file. Default is 1024 \* 1024 \* 32 (32MB). |
 |  [maxNumberOfParallelFileTransfers?](./verse-three.startoptions.maxnumberofparallelfiletransfers.md) |  | number | _(Optional)_ Maximum number of parallel file transfers. Default is 1 (send = 1 and receive = 1). |

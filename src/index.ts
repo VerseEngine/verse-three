@@ -155,6 +155,12 @@ export interface StartOptions {
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   voiceMediaTrackSettings?: any;
+
+  /**
+   * Custom child elements for 2D UI
+   * see: {@link https://github.com/VerseEngine/verse-three-ui#custom-buttons}
+   */
+  gui2dSlots?: string | Node;
 }
 
 /**
@@ -243,21 +249,28 @@ export async function start(
   defaultAvatarURL: string,
   avatarAnimationDataSource: AvatarAnimationDataSource,
   iceServers: RTCIceServer[],
-  options?: StartOptions
+  options?: StartOptions,
 ): Promise<VerseStartResult> {
   const isVoiceDisabled = !navigator.mediaDevices;
   const gui2d = document.createElement("gui-2d") as HTMLElement as Gui2DElement;
+  if (options?.gui2dSlots) {
+    if (options.gui2dSlots instanceof Node) {
+      gui2d.appendChild(options?.gui2dSlots);
+    } else {
+      gui2d.innerHTML = options?.gui2dSlots;
+    }
+  }
   if (!options?.setBgmVolume) {
     gui2d.setAttribute("bgm-disabled", "bgm-disabled");
   } else {
     gui2d.setAttribute(
       "bgm-type",
-      options?.isCrossOriginBGM && isIOS() ? "toggle" : "slider"
+      options?.isCrossOriginBGM && isIOS() ? "toggle" : "slider",
     );
   }
   if (isVoiceDisabled) {
     console.warn(
-      "HTTPS is required for voice communication (https:// or localhost)"
+      "HTTPS is required for voice communication (https:// or localhost)",
     );
     gui2d.setAttribute("mic-disabled", "mic-disabled");
     gui2d.setAttribute("voice-disabled", "voice-disabled");
@@ -276,7 +289,7 @@ export async function start(
     entranceServerURL,
     defaultAvatarURL,
     iceServers,
-    options
+    options,
   );
 
   gui2d?.ready();
@@ -291,7 +304,7 @@ async function _start(
   entranceServerURL: string,
   defaultAvatarURL: string,
   iceServers?: RTCIceServer[],
-  options?: StartOptions
+  options?: StartOptions,
 ): Promise<VerseStartResult> {
   let gui3d: Gui3D;
 
@@ -321,7 +334,7 @@ async function _start(
   const playerController = new PlayerController(adapter);
   const playerMgr = new PlayerManager(adapter, defaultAvatarURL);
   const player = await playerMgr.createPlayer(
-    playerController.xrController?.handHolder
+    playerController.xrController?.handHolder,
   );
   adapter.addTickListener(player);
   adapter.getCameraRig().add(player.object3D);
@@ -338,11 +351,11 @@ async function _start(
         iceServers,
       } as RTCConfiguration,
       logLevel: "info",
-    }
+    },
   );
 
   verse.setMicAudioConstraints(
-    options?.voiceMediaTrackSettings || DEFAULT_VOICE_MEDIA_TRACK_SETTINGS
+    options?.voiceMediaTrackSettings || DEFAULT_VOICE_MEDIA_TRACK_SETTINGS,
   );
   await verse.start();
 
@@ -351,7 +364,7 @@ async function _start(
     adapter,
     player,
     verse.maxAvatarFileSize,
-    options?.setBgmVolume
+    options?.setBgmVolume,
   );
   gui2d.setPresetAvatars(options?.presetAvatars);
   gui2d.setGuiHandlers(guiHandlers);
@@ -378,14 +391,14 @@ async function _start(
           player.setupNonVR();
           playerController.isVR = false;
         },
-      }
+      },
     );
 
     gui3d = setupGui3D(
       adapter,
       guiHandlers,
       !options?.setBgmVolume,
-      isVoiceDisabled
+      isVoiceDisabled,
     );
   } else {
     player.setupNonVR();
@@ -404,7 +417,7 @@ function setupGui3D(
   adapter: EnvAdapter,
   guiHandlers: AppGuiHandlers,
   isBgmDisabled: boolean,
-  isVoiceDisabled: boolean
+  isVoiceDisabled: boolean,
 ): Gui3D {
   const xr = adapter.getXRManager();
   if (!xr) {
@@ -425,7 +438,7 @@ function setupGui3D(
   const switcher = new Gui3DVisibleSwitcher(
     xr,
     menu.object3D,
-    adapter.getHead()
+    adapter.getHead(),
   );
   adapter.addTickListener(switcher);
   return menu;

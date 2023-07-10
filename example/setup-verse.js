@@ -32,7 +32,8 @@ export const setupVerse = async (
   collisionObjects,
   interactableObjects,
   teleportTargetObjects,
-  bgmURL
+  bgmURL,
+  startOptions,
 ) => {
   const adapter = new VerseThree.DefaultEnvAdapter(
     renderer,
@@ -49,7 +50,7 @@ export const setupVerse = async (
       onSelectDown: (el, _point) => {
         // assert(interactableObjects.includes(el) === true)
       },
-    }
+    },
   );
 
   const res = await VerseThree.start(
@@ -66,7 +67,8 @@ export const setupVerse = async (
       setBgmVolume: createBGMController(bgmURL),
       isCrossOriginBGM: isCrossOriginBGM(bgmURL),
       presetAvatars: PRESET_AVATARS,
-    }
+      ...(startOptions || {}),
+    },
   );
   console.log("verse ready");
   return { ...res, adapter };
