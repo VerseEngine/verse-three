@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -36,7 +36,7 @@
           "@pixiv/three-vrm": "https://cdn.jsdelivr.net/npm/@pixiv/three-vrm@2.0.0/lib/three-vrm.module.min.js",
           "./setup": "./setup.js",
           "./world": "./world.js",
-          "verse-three": "https://cdn.jsdelivr.net/npm/@verseengine/verse-three@1.0.5/dist/esm/index.min.js",
+          "verse-three": "https://cdn.jsdelivr.net/npm/@verseengine/verse-three@1.0.6/dist/esm/index.min.js",
           "./setup-verse": "./setup-verse.js"
         }
       }
@@ -100,7 +100,7 @@
           collisionObjects,
           interactableObjects,
           teleportTargetObjects,
-          BGM_URL
+          BGM_URL,
         ).then(({ tick }) => {
           _tick = tick;
         });

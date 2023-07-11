@@ -2,7 +2,7 @@ import * as VerseThree from "@verseengine/verse-three";
 import { createBGMController, isCrossOriginBGM } from "./world";
 
 const VERSE_WASM_URL =
-  "https://cdn.jsdelivr.net/npm/@verseengine/verse-three@1.0.5/dist/verse_core_bg.wasm";
+  "https://cdn.jsdelivr.net/npm/@verseengine/verse-three@1.0.6/dist/verse_core_bg.wasm";
 const ENTRANCE_SERVER_URL = "https://entrance.verseengine.cloud";
 const ANIMATION_MAP = {
   idle: "./asset/animation/idle.fbx",
@@ -32,7 +32,7 @@ export const setupVerse = async (
   collisionObjects,
   interactableObjects,
   teleportTargetObjects,
-  bgmURL
+  bgmURL,
 ) => {
   const adapter = new VerseThree.DefaultEnvAdapter(
     renderer,
@@ -49,7 +49,7 @@ export const setupVerse = async (
       onSelectDown: (el, _point) => {
         // assert(interactableObjects.includes(el) === true)
       },
-    }
+    },
   );
 
   const res = await VerseThree.start(
@@ -66,7 +66,7 @@ export const setupVerse = async (
       setBgmVolume: createBGMController(bgmURL),
       isCrossOriginBGM: isCrossOriginBGM(bgmURL),
       presetAvatars: PRESET_AVATARS,
-    }
+    },
   );
   console.log("verse ready");
   return { ...res, adapter };
