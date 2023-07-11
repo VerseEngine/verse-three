@@ -1,4 +1,4 @@
-# verse-three
+# verse-three &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/VerseEngine/verse-three/blob/main/LICENSE)  [![npm version](https://img.shields.io/npm/v/@verseengine%2Fverse-three.svg?style=flat)](https://www.npmjs.com/package/@verseengine%2Fverse-three)  [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/VerseEngine/verse-three/pulls)
 VerseEngine implementation for three.js.  
 VerseEngine is a web-based metaverse engine on a P2P overlay network.
 
