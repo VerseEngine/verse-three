@@ -23,9 +23,7 @@
         user-select: none;
         -webkit-user-select: none;
       }
-      .custom-button > span {
-        display: grid;
-        place-items: center;
+      .custom-button > svg {
         width: 1.5rem;
         height: 1.5rem;
       }
@@ -112,7 +110,7 @@
           },
         ).then(({ tick, player, adapter }) => {
           _tick = tick;
-          setupToggleFPS(adapter, player, camera);
+          setupToggleFPS(adapter, player);
         });
       };
       if (document.readyState === "loading") {
@@ -121,23 +119,27 @@
         main();
       }
 
-      function setupToggleFPS(adapter, player, camera) {
+      function setupToggleFPS(adapter, player) {
         let isFirstPerson = true;
 
         const f = () => {
           if (isFirstPerson) {
-            player.avatar.setFirstPersonMode([camera]);
-            camera.position.set(0, player.avatar.getHeadHeight(), 0);
-            camera.parent.rotation.set(0, 0, 0);
+            player.avatar.setFirstPersonMode([adapter.getCamera()]);
+            adapter.getHead().position.set(0, player.avatar.getHeadHeight(), 0);
+            adapter.getHead().parent.rotation.set(0, 0, 0);
           } else {
-            player.avatar.setThirdPersonMode([camera]);
-            camera.position.set(0.0, player.avatar.getHeadHeight() + 0.2, 2.0);
-            camera.parent.rotation.set(-0.2, 0, 0);
+            player.avatar.setThirdPersonMode([adapter.getCamera()]);
+            adapter
+              .getHead()
+              .position.set(0.0, player.avatar.getHeadHeight() + 0.2, 2.0);
+            adapter.getHead().parent.rotation.set(-0.2, 0, 0);
           }
         };
 
         adapter.addAvatarChangedListener((avatar) => {
-          f();
+          if (!adapter.getRenderer().xr.isPresenting) {
+            f();
+          }
         });
 
         document.querySelector("#toggle-fps").addEventListener(
@@ -154,7 +156,24 @@
   <body>
     <template id="gui2d-slots">
       <button slot="after" class="custom-button" id="toggle-fps">
-        <span>a</span>
+        <!-- iconoir https://github.com/iconoir-icons/iconoir/blob/main/LICENSE -->
+        <svg
+          width="24px"
+          height="24px"
+          stroke-width="1"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          color="currentColor"
+        >
+          <path
+            d="M15 12v4.4a.6.6 0 01-.6.6H3.6a.6.6 0 01-.6-.6V7.6a.6.6 0 01.6-.6h10.8a.6.6 0 01.6.6V12zm0 0l5.016-4.18a.6.6 0 01.984.461v7.438a.6.6 0 01-.984.46L15 12z"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </svg>
       </button>
     </template>
   </body>
