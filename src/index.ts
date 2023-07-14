@@ -359,6 +359,8 @@ async function _start(
   );
   await verse.start();
 
+  player._internalSetup(verse);
+
   const guiHandlers = createGuiHandlers(
     verse,
     adapter,
@@ -442,4 +444,33 @@ function setupGui3D(
   );
   adapter.addTickListener(switcher);
   return menu;
+}
+
+/**
+ * Verify the signature.
+ * Verifies that the data was signed in the session of the session ID of the input
+ *
+ * @example
+ * see:  {@link Player.sign}
+ */
+export function verify(
+  sessionID: string,
+  signature: string,
+  data: Uint8Array,
+): boolean {
+  return VerseCore.Verse.verify(sessionID, signature, data);
+}
+/**
+ * Verify the signature.
+ * Verifies that the data was signed in the session of the session ID of the input
+ *
+ * @example
+ * see:  {@link Player.signString}
+ */
+export function verifyString(
+  sessionID: string,
+  signature: string,
+  data: string,
+): boolean {
+  return VerseCore.Verse.verifyString(sessionID, signature, data);
 }

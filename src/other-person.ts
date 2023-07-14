@@ -33,7 +33,7 @@ export class OtherPerson implements VerseCore.OtherPerson {
   private _avatar: Avatar;
   private _audioEl?: HTMLAudioElement;
   private _audio?: THREE.PositionalAudio;
-  private _sessionId: string;
+  private _sessionID: string;
 
   private _bi: InterpolationBuffer;
   // @ts-ignore
@@ -59,14 +59,14 @@ export class OtherPerson implements VerseCore.OtherPerson {
   private _isMoved = false;
 
   constructor(
-    sessionId: string,
+    sessionID: string,
     avatarData: Uint8Array,
     adapter: EnvAdapter,
-    options?: OtherPersonOptions
+    options?: OtherPersonOptions,
   ) {
     this._adapter = adapter;
     this._object3D = new THREE.Object3D();
-    this._sessionId = sessionId;
+    this._sessionID = sessionID;
     this._setAvatarData(avatarData);
 
     this._moveIntervalSec =
@@ -89,12 +89,43 @@ export class OtherPerson implements VerseCore.OtherPerson {
     };
     this._adapter.addVoiceVolumeChangeListener(this._onVoiceVolumeChanged);
   }
+  /**
+   * Uniquely identifying ID.  The same user will have a different ID each time they connect.
+   *
+   * The session ID is the public key for ED25519.
+   * Verse holds the private key for the session ID internally
+   */
+  get sessionID() {
+    return this._sessionID;
+  }
   get object3D() {
     return this._object3D;
   }
   get avatar() {
     return this._avatar;
   }
+
+  /**
+   * Verify the signature.
+   * Verifies that the data was signed in the session of the session ID of the input
+   *
+   * @example
+   * see:  {@link Player.sign}
+   */
+  verify(signature: string, data: Uint8Array): boolean {
+    return VerseCore.Verse.verify(this.sessionID, signature, data);
+  }
+  /**
+   * Verify the signature.
+   * Verifies that the data was signed in the session of the session ID of the input
+   *
+   * @example
+   * see:  {@link Player.signString}
+   */
+  verifyString(signature: string, data: string): boolean {
+    return VerseCore.Verse.verifyString(this.sessionID, signature, data);
+  }
+
   setPosition(pos_x: number, pos_y: number, pos_z: number, angle: number) {
     this._object3D.position.set(pos_x, pos_y, pos_z);
     this._object3D.rotateY(angle);
@@ -206,7 +237,7 @@ export class OtherPerson implements VerseCore.OtherPerson {
 
     if (this._avatar && this._lipSync) {
       this._avatar.lipSync(
-        ...(this._lipSync.update() as [number, number, number])
+        ...(this._lipSync.update() as [number, number, number]),
       );
     }
 
@@ -313,9 +344,9 @@ export class OtherPerson implements VerseCore.OtherPerson {
         return false;
       }
       if (!this._audio) {
-        console.log("[voice] setup voice", this._sessionId);
+        console.log("[voice] setup voice", this._sessionID);
         this._audio = new THREE.PositionalAudio(
-          this._adapter.getAudioListener()
+          this._adapter.getAudioListener(),
         );
         this._object3D.add(this._audio);
         this._audio.setMaxDistance(50);
@@ -334,13 +365,13 @@ export class OtherPerson implements VerseCore.OtherPerson {
       this._audioEl.muted = true;
 
       this._audio?.setMediaStreamSource(ms);
-      console.log("[voice] set voice stream", this._sessionId);
+      console.log("[voice] set voice stream", this._sessionID);
 
       // @ts-ignore
       this._lipSync = new Lipsync(
         THREE.AudioContext.getContext() as AudioContext,
         ms,
-        0.7
+        0.7,
       );
       return true;
     });
@@ -379,17 +410,17 @@ export class OtherPersonFactory implements VerseCore.OtherPersonFactory {
    * Implementation of `@verseengine/verser-core#OtherPersonFactory.create`
    */
   create(
-    sessionId: string,
+    sessionID: string,
     avatarData: Uint8Array,
     pos_x: number,
     pos_y: number,
     pos_z: number,
-    angle: number
+    angle: number,
   ): OtherPerson {
     const p = new OtherPerson(
-      sessionId,
+      sessionID,
       new Uint8Array(avatarData),
-      this._adapter
+      this._adapter,
     );
     p.setPosition(pos_x, pos_y, pos_z, angle);
     this._parent.add(p.object3D);

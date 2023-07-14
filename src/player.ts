@@ -29,8 +29,6 @@ export class Player implements VerseCore.Player {
   private _avatarURL?: string;
   // @ts-ignore: Because it is set up with an asynchronous factory method
   private _avatar: Avatar;
-  // @ts-ignore: Because it is set up with an asynchronous factory method
-  private _iid: number;
   private _avatarChanged: Date | null;
   private _isLoaded = false;
   private _avatarIK?: AvatarIK;
@@ -40,12 +38,15 @@ export class Player implements VerseCore.Player {
   private _textData?: string;
   private _textDataChanged: Date | null;
 
+  private _sessionID = "";
+  private _verse: VerseCore.Verse | null = null;
+
   static async create(
     url: string | undefined | null,
     data: ArrayBuffer | undefined | null,
     adapter: EnvAdapter,
     onAvatarChanged: (p: Player, avatarData: ArrayBuffer) => void,
-    handHolder?: HandHolder
+    handHolder?: HandHolder,
   ) {
     const res = new Player(adapter, onAvatarChanged, handHolder);
     if (url) {
@@ -61,7 +62,7 @@ export class Player implements VerseCore.Player {
   constructor(
     adapter: EnvAdapter,
     onAvatarChanged: (p: Player, avatarData: ArrayBuffer) => void,
-    handHolder?: HandHolder
+    handHolder?: HandHolder,
   ) {
     this._avatarChanged = null;
     this._onAvatarChanged = onAvatarChanged;
@@ -69,6 +70,17 @@ export class Player implements VerseCore.Player {
     this._adapter = adapter;
     this._handHolder = handHolder;
     this._object3D = new THREE.Object3D();
+  }
+  /**
+   * Uniquely identifying ID.  The same user will have a different ID each time they connect.
+   *
+   * The session ID is the public key for ED25519.
+   * Verse holds the private key for the session ID internally
+   *
+   * The session ID (public key) of the other person can be obtained when {@link OtherPerson.sessionID} is called
+   */
+  get sessionID() {
+    return this._sessionID;
   }
   get object3D() {
     return this._object3D;
@@ -78,6 +90,74 @@ export class Player implements VerseCore.Player {
   }
   get avatar(): Avatar {
     return this._avatar;
+  }
+
+  /**
+   * Create a data signature with the private key of the session ID.
+   *
+   * @example
+   * ```ts
+   * const { player } = await VerseThree.start(...);
+   * ...
+   * const data = ...;
+   * const signature = player.sign(data);
+   * await fetch('...',
+   *   headers: {
+   *	    'Content-Type': 'application/json'
+   *   },
+   *   body: JSON.stringify({
+   *     'sessionID': player.sessionID,
+   *     signature,
+   *     data
+   *   })
+   * });
+   *
+   * ...
+   * const valid = otherPerson.verify(signature, data);
+   * // or
+   * const valid = VerseThree.verify(otherPerson.sessionID, signature, data);
+   * if(!valid) { throw new Error('invalid data'); }
+   * ```
+   */
+  sign(data: Uint8Array): string {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    return this._verse!.sign(data);
+  }
+  /**
+   * Create a data signature with the private key of the session ID.
+   *
+   * @example
+   * ```ts
+   * const { player } = await VerseThree.start(...);
+   * ...
+   * const data = ...;
+   * const signature = player.signString(data);
+   * await fetch('...',
+   *   headers: {
+   *	    'Content-Type': 'application/json'
+   *   },
+   *   body: JSON.stringify({
+   *     'sessionID': player.sessionID,
+   *     signature,
+   *     data
+   *   })
+   * });
+   *
+   * ...
+   * const valid = otherPerson.verifyString(signature, data);
+   * // or
+   * const valid = VerseThree.verifyString(otherPerson.sessionID, signature, data);
+   * if(!valid) { throw new Error('invalid data'); }
+   * ```
+   */
+  signString(data: string): string {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    return this._verse!.signString(data);
+  }
+
+  _internalSetup(verse: VerseCore.Verse) {
+    this._sessionID = verse.getSessionID();
+    this._verse = verse;
   }
   /**
    * Implementation of `@verseengine/verse-core#Player.getPosition`
@@ -138,6 +218,7 @@ export class Player implements VerseCore.Player {
       }
     })();
   }
+
   async setAvatarURL(url: string, fileData: ArrayBuffer) {
     this._avatarURL = url;
     await this._setAvatarData(fileData);
@@ -170,7 +251,7 @@ export class Player implements VerseCore.Player {
       {
         isInvisibleFirstPerson: true,
         isLowSpecMode: this._adapter.isLowSpecMode(),
-      }
+      },
     );
     this._setFirstPersonMode();
 
@@ -180,8 +261,8 @@ export class Player implements VerseCore.Player {
       .getHead()
       .position.copy(
         new THREE.Vector3(0, this._avatar.getHeadHeight(), 0).add(
-          this._avatar.headBoneOffset
-        )
+          this._avatar.headBoneOffset,
+        ),
       );
 
     if (!this._isLoaded) {
@@ -208,8 +289,8 @@ export class Player implements VerseCore.Player {
   private _setFirstPersonMode() {
     this._avatar.setFirstPersonMode(
       [this._adapter.getCamera(), this._adapter.getXRCamera()].filter(
-        (v) => !!v
-      ) as THREE.Camera[]
+        (v) => !!v,
+      ) as THREE.Camera[],
     );
   }
   private _setupIK() {

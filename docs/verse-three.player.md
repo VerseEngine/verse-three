@@ -26,11 +26,13 @@ export declare class Player implements VerseCore.Player
 |  [avatar](./verse-three.player.avatar.md) | <code>readonly</code> | Avatar |  |
 |  [avatarURL](./verse-three.player.avatarurl.md) | <code>readonly</code> | string \| undefined |  |
 |  [object3D](./verse-three.player.object3d.md) | <code>readonly</code> | THREE.Object3D&lt;THREE.Event&gt; |  |
+|  [sessionID](./verse-three.player.sessionid.md) | <code>readonly</code> | string | <p>Uniquely identifying ID. The same user will have a different ID each time they connect.</p><p>The session ID is the public key for ED25519. Verse holds the private key for the session ID internally</p><p>The session ID (public key) of the other person can be obtained when [OtherPerson.sessionID](./verse-three.otherperson.sessionid.md) is called</p> |
 
 ## Methods
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [\_internalSetup(verse)](./verse-three.player._internalsetup.md) |  |  |
 |  [create(url, data, adapter, onAvatarChanged, handHolder)](./verse-three.player.create.md) | <code>static</code> |  |
 |  [getAngle()](./verse-three.player.getangle.md) |  | Implementation of <code>@verseengine/verse-core#Player.getAngle</code> |
 |  [getAvatar()](./verse-three.player.getavatar.md) |  | Implementation of <code>@verseengine/verse-core#Player.getAvatar</code> |
@@ -44,5 +46,7 @@ export declare class Player implements VerseCore.Player
 |  [setTextData(textData)](./verse-three.player.settextdata.md) |  |  |
 |  [setupNonVR()](./verse-three.player.setupnonvr.md) |  |  |
 |  [setupVR()](./verse-three.player.setupvr.md) |  |  |
+|  [sign(data)](./verse-three.player.sign.md) |  | Create a data signature with the private key of the session ID. |
+|  [signString(data)](./verse-three.player.signstring.md) |  | Create a data signature with the private key of the session ID. |
 |  [tick(deltaTime)](./verse-three.player.tick.md) |  | Processes called periodically. |
 

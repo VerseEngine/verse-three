@@ -2,7 +2,8 @@ import * as VerseThree from "verse-three";
 import { createBGMController, isCrossOriginBGM } from "./world";
 
 const VERSE_WASM_URL =
-  "https://cdn.jsdelivr.net/npm/@verseengine/verse-three@1.0.6/dist/verse_core_bg.wasm";
+  "https://cdn.jsdelivr.net/npm/@verseengine/verse-three@1.0.7/dist/verse_core_bg.wasm";
+// const VERSE_WASM_URL = "../dist/verse_core_bg.2b0cb9277f149b8f.wasm";
 const ENTRANCE_SERVER_URL = "https://entrance.verseengine.cloud";
 const ANIMATION_MAP = {
   idle: "./asset/animation/idle.fbx",

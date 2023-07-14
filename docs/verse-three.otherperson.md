@@ -17,7 +17,7 @@ export declare class OtherPerson implements VerseCore.OtherPerson
 
 |  Constructor | Modifiers | Description |
 |  --- | --- | --- |
-|  [(constructor)(sessionId, avatarData, adapter, options)](./verse-three.otherperson._constructor_.md) |  | Constructs a new instance of the <code>OtherPerson</code> class |
+|  [(constructor)(sessionID, avatarData, adapter, options)](./verse-three.otherperson._constructor_.md) |  | Constructs a new instance of the <code>OtherPerson</code> class |
 
 ## Properties
 
@@ -25,6 +25,7 @@ export declare class OtherPerson implements VerseCore.OtherPerson
 |  --- | --- | --- | --- |
 |  [avatar](./verse-three.otherperson.avatar.md) | <code>readonly</code> | Avatar |  |
 |  [object3D](./verse-three.otherperson.object3d.md) | <code>readonly</code> | THREE.Object3D&lt;THREE.Event&gt; |  |
+|  [sessionID](./verse-three.otherperson.sessionid.md) | <code>readonly</code> | string | <p>Uniquely identifying ID. The same user will have a different ID each time they connect.</p><p>The session ID is the public key for ED25519. Verse holds the private key for the session ID internally</p> |
 
 ## Methods
 
@@ -40,4 +41,6 @@ export declare class OtherPerson implements VerseCore.OtherPerson
 |  [setPosition(pos\_x, pos\_y, pos\_z, angle)](./verse-three.otherperson.setposition.md) |  |  |
 |  [setTextData(textData)](./verse-three.otherperson.settextdata.md) |  | Implementation of <code>@verseengine/verser-core#OtherPerson.setTextData</code> |
 |  [tick(deltaTime)](./verse-three.otherperson.tick.md) |  | Processes called periodically. |
+|  [verify(signature, data)](./verse-three.otherperson.verify.md) |  | Verify the signature. Verifies that the data was signed in the session of the session ID of the input |
+|  [verifyString(signature, data)](./verse-three.otherperson.verifystring.md) |  | Verify the signature. Verifies that the data was signed in the session of the session ID of the input |
 

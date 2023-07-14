@@ -25,6 +25,8 @@ see: [start()](./verse-three.start.md)
 |  Function | Description |
 |  --- | --- |
 |  [start(adapter, otherPeopleContainer, wasmPath, entranceServerURL, defaultAvatarURL, avatarAnimationDataSource, iceServers, options)](./verse-three.start.md) | Start connecting to the network. |
+|  [verify(sessionID, signature, data)](./verse-three.verify.md) | Verify the signature. Verifies that the data was signed in the session of the session ID of the input |
+|  [verifyString(sessionID, signature, data)](./verse-three.verifystring.md) | Verify the signature. Verifies that the data was signed in the session of the session ID of the input |
 
 ## Interfaces
 

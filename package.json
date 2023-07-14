@@ -1,6 +1,6 @@
 {
   "name": "@verseengine/verse-three",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Web-based Metaverse Engine on P2P overlay network for three.js.",
   "author": "Appland, Inc",
   "license": "MIT",
@@ -42,7 +42,7 @@
     "@verseengine/three-touch-controller": "1.0.2",
     "@verseengine/three-xr-controller": "1.0.1",
     "@verseengine/verse-three-ui": "1.0.2",
-    "@verseengine/verse-core": "1.0.0",
+    "@verseengine/verse-core": "1.0.1",
     "buffered-interpolation": "github:Infinitelee/buffered-interpolation",
     "three": ">=0.153.0"
   },

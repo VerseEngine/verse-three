@@ -9,14 +9,14 @@ Constructs a new instance of the `OtherPerson` class
 **Signature:**
 
 ```typescript
-constructor(sessionId: string, avatarData: Uint8Array, adapter: EnvAdapter, options?: OtherPersonOptions);
+constructor(sessionID: string, avatarData: Uint8Array, adapter: EnvAdapter, options?: OtherPersonOptions);
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  sessionId | string |  |
+|  sessionID | string |  |
 |  avatarData | Uint8Array |  |
 |  adapter | [EnvAdapter](./verse-three.envadapter.md) |  |
 |  options | OtherPersonOptions | _(Optional)_ |
