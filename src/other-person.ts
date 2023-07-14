@@ -140,7 +140,9 @@ export class OtherPerson implements VerseCore.OtherPerson {
    */
   setTextData(textData: string) {
     this._textData = textData;
-    this._adapter.onTextDataChanged(this, textData);
+    if (this._avatar) {
+      this._adapter.onTextDataChanged(this, textData);
+    }
   }
   getTextData() {
     return this._textData;
@@ -166,8 +168,9 @@ export class OtherPerson implements VerseCore.OtherPerson {
         {
           isLowSpecMode,
           animationIntervalSec: isLowSpecMode ? 1 / 30 : 1 / 60,
-        }
+        },
       );
+      const isFirst = !this._avatar;
       avatar.object3D.visible = false;
       avatar.object3D.name = "otherPerson";
       this._avatar = avatar;
@@ -175,9 +178,12 @@ export class OtherPerson implements VerseCore.OtherPerson {
       this._avatar.playClip("idle");
       this._updateMouthPosition();
       this._biSyncBones = this._avatar.syncTargetBones.map(
-        (_) => new InterpolationBuffer(InterpolationBuffer.MODE_LERP, 0.3)
+        (_) => new InterpolationBuffer(InterpolationBuffer.MODE_LERP, 0.3),
       );
       this._adapter.onOtherPersonAvatarChanged(this);
+      if (isFirst && this._textData) {
+        this._adapter.onTextDataChanged(this, this._textData);
+      }
     })();
   }
   /**
